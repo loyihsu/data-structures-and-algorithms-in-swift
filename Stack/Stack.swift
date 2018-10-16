@@ -24,17 +24,17 @@ class Stack {
     }
     
     func Push(element: Any) {
-        // This function adds new element to the stack and update the top index
+        // This function adds new element to the stack
         stack.append(element)
     }
     
     func Pop() {
-        // This function pops the element on the top and update the top index
+        // This function pops the element on the top
         stack.popLast()
     }
     
     func Size() -> Int {
-        // This function returns the size of the stack for the time being
+        // This function returns the size of the stack
         return stack.count
     }
     

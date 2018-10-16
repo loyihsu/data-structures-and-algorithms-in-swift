@@ -31,7 +31,7 @@ class SinglyLinkedList {
     }
     
     // Subscript
-    // SinglyLinkedList[index].data
+    //  - SinglyLinkedList[index].data
     subscript (index: Int) -> Node? {
         get {
             if length == 0 {
@@ -73,7 +73,7 @@ class SinglyLinkedList {
     }
     
     func isEmpty() -> Bool {
-        // Return whether
+        // Return whether the list is empty
         return (head == nil)
     }
     
@@ -90,7 +90,7 @@ class SinglyLinkedList {
         let newNode = Node.init(value: data)
         
         if head != nil {
-            // If there is already elements in the list.
+            // If there are already elements in the list.
             newNode.next = head     // [newNode] -> [head]
             head = newNode          // [head (newNode)] -> [old head]
         } else {
@@ -137,10 +137,10 @@ class SinglyLinkedList {
                 count += 1
             }
             
-            insertBetween(before: cur!, after: (cur?.next)!, data: data)    // call the private function to insert at the assigned place
+            // Call the private function to insert at the assigned place
+            insertBetween(before: cur!, after: (cur?.next)!, data: data)
         } else {
             // Handle index out of range
-            
             print("insertAt Error: Index [\(index)] is out of range.")
         }
     }
@@ -161,7 +161,6 @@ class SinglyLinkedList {
         }
         
         cur?.next = nil
-        
     }
     
     func removeAt(index: Int) {
@@ -186,11 +185,12 @@ class SinglyLinkedList {
                 count += 1
             }
             
+            // Call the private function to delete at the assigned place
             removeBetween(before: cur!, after: (cur?.next?.next)!)
             
         } else {
             // Handle index out of range
-            print("removeAt Error: Index [\(index)] is out of range.")   // call the private function to delete at the assigned place
+            print("removeAt Error: Index [\(index)] is out of range.")
         }
     }
     
