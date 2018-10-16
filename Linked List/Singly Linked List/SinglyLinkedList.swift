@@ -227,6 +227,8 @@ class SinglyLinkedList {
         before.next = after
     }
     
+    // MARK: Elements
+    
     var head: Node?         // head element
     var tail: Node?         // tail element
     var length: Int {       // length of the list
