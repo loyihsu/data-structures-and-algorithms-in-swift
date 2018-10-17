@@ -166,25 +166,18 @@ class SinglyLinkedList {
     
     func popTail() {
         // Delete the last element from the list
-        
+        // TODO: Rewrite this!!!!
         if head != nil {
             if head?.next == nil {
                 head = nil
                 tail = nil
             } else {
-                var cur = head
-                
-                while cur?.next?.next != nil {
-                    cur = cur?.next
-                }
-                
-                cur?.next = nil
+               
             }
         } else {
             // Error handling
             print("popTail Error: The list is empty.")
         }
-        
     }
     
     func removeAt(index: Int) {
