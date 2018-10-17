@@ -1,6 +1,6 @@
 //
 //  SinglyLinkedList.swift
-//  
+//
 //
 //  Created by Loyi on 10/16/18.
 //
@@ -28,6 +28,7 @@ class SinglyLinkedList {
         // Initializer
         
         head = nil
+        tail = nil
     }
     
     // Subscript
@@ -149,18 +150,41 @@ class SinglyLinkedList {
     
     func popHead() {
         // Delete the first element from the list
-        head = head?.next
+        if head != nil {
+            if head?.next == nil {
+                head = nil
+                tail = nil
+            } else {
+                head = head?.next
+            }
+        } else {
+            // Error handling
+            print("popHead Error: The list is empty")
+        }
+        
     }
     
     func popTail() {
         // Delete the last element from the list
-        var cur = head
         
-        while cur?.next?.next != nil {
-            cur = cur?.next
+        if head != nil {
+            if head?.next == nil {
+                head = nil
+                tail = nil
+            } else {
+                var cur = head
+                
+                while cur?.next?.next != nil {
+                    cur = cur?.next
+                }
+                
+                cur?.next = nil
+            }
+        } else {
+            // Error handling
+            print("popTail Error: The list is empty.")
         }
         
-        cur?.next = nil
     }
     
     func removeAt(index: Int) {
@@ -197,17 +221,24 @@ class SinglyLinkedList {
     func printList() {
         // Print the list
         
-        var cur = head
-        
-        while cur != nil {
+        if head != nil {
+            var cur = head
             
-            if cur?.next == nil {
-                print(cur?.data ?? "")
-            } else {
-                print(cur?.data ?? "", terminator: ", ")
+            while cur != nil {
+                
+                if cur?.next == nil {
+                    print(cur?.data ?? "")
+                } else {
+                    print(cur?.data ?? "", terminator: ", ")
+                }
+                cur = cur?.next
             }
-            cur = cur?.next
+        } else {
+            // Empty list handling
+            print("The list is empty.")
         }
+        
+        
         
     }
     
@@ -217,14 +248,16 @@ class SinglyLinkedList {
         // Insert at between 'before' and 'after'
         let newNode = Node.init(value: data)
         
-        newNode.next = after
-        before.next = newNode
+        newNode.next = after        // newNode -> [after]
+        before.next = newNode       // [before] -> newNode -> after
     }
     
     private func removeBetween(before: Node, after: Node)
     {
         // Remove between 'before' and 'after'
-        before.next = after
+        // - [before] -> delete this -> [after]
+        
+        before.next = after         // [before] -> [after]
     }
     
     // MARK: Elements
