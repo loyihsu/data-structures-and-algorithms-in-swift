@@ -4,7 +4,9 @@ This project is about Implementing of common data structure in Swift. The data s
 
 - [Stack](https://github.com/loyihsu/Data-Structures-in-Swift/tree/master/Stack)
 - [Queue](https://github.com/loyihsu/Data-Structures-in-Swift/tree/master/Queue)
-- [Singly Linked List](https://github.com/loyihsu/Data-Structures-in-Swift/tree/master/Linked%20List/Singly%20Linked%20List)
+- Linked List
+  - [Singly Linked List](https://github.com/loyihsu/Data-Structures-in-Swift/tree/master/Linked%20List/Singly%20Linked%20List)
+  - [Doubly Linked List](https://github.com/loyihsu/Data-Structures-in-Swift/tree/master/Linked%20List/Doubly%20Linked%20List)
 
 I am still working on implementing an increasing number of other data structures, so the list will grow.
 
