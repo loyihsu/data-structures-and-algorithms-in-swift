@@ -84,7 +84,7 @@ class SinglyLinkedList {
     }
     
     // MARK: - Add Elements
-    func pushFront(data: Any) {
+    func pushHead(data: Any) {
         // Add a new element to the front
         
         let newNode = Node.init(value: data)
@@ -122,7 +122,7 @@ class SinglyLinkedList {
         
         if index == 0 {
             // Add element to the front
-            pushFront(data: data)
+            pushHead(data: data)
         } else if index == length {
             // Add element to the end
             pushTail(data: data)
@@ -147,7 +147,7 @@ class SinglyLinkedList {
     
     // MARK: - Delete elements
     
-    func popFront() {
+    func popHead() {
         // Delete the first element from the list
         head = head?.next
     }
@@ -170,7 +170,7 @@ class SinglyLinkedList {
         
         if index == 0 {
             // Delete the element at front
-            popFront()
+            popHead()
         } else if index == length - 1 {
             // Delete the element at the end
             popTail()

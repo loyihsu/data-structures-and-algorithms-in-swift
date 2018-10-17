@@ -21,7 +21,7 @@ Three methods are implemented to insert to the list:
 1. Insert to the head
 
 ```swift
-myListName.pushFront(data: /*your data*/)
+myListName.pushHead(data: /*your data*/)
 ```
 
 2. Insert to the tail
@@ -41,7 +41,7 @@ myListName.insertAt(index: /*Index 0...(length-1)*/, data: /*your data*/)
 1. Remove from the head
 
 ```swift
-myListName.popFront()
+myListName.popHead()
 ```
 
 2. Remove from the tail
