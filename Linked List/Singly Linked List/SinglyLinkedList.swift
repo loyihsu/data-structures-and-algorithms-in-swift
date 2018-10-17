@@ -166,13 +166,23 @@ class SinglyLinkedList {
     
     func popTail() {
         // Delete the last element from the list
-        // TODO: Rewrite this!!!!
+        
         if head != nil {
             if head?.next == nil {
+                // Only one element inside
                 head = nil
                 tail = nil
             } else {
-               
+                // More than one element
+                var cur = head
+                
+                while cur?.next?.next != nil
+                {
+                    cur = cur?.next
+                }
+                
+                cur?.next = nil
+                tail = cur
             }
         } else {
             // Error handling
