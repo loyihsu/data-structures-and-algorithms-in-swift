@@ -101,16 +101,14 @@ To clear the list, simply call the clear() function.
 myListName.clear()
 ```
 
-Notice that this function is different from the isEmpty() function, which returns a Bool indicating whether or not the list is empty.
+### To get whether the list is empty
 
 ```swift
-myListName.isEmpty()
+myListName.isEmpty
 ```
 
-### To get the length of the list
-
-To get the length of the list:
+### To get the size of the list
 
 ```swift
-myListName.length
+myListName.size
 ```

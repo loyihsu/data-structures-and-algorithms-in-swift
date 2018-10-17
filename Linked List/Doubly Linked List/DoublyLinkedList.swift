@@ -1,6 +1,6 @@
 //
 //  DoublyLinkedList.swift
-//  
+//
 //
 //  Created by Loyi on 10/17/18.
 //
@@ -11,23 +11,38 @@ class Node {
     
     // Nodes of the doubly linked list
     
+    /**
+     Initializer for a new Node. Provide a value and the prev and next elements will be predefined as nil.
+     */
+    
     init (value: Any) {
-        // Initializer
         data = value
         prev = nil
         next = nil
     }
-    
+    /**
+     A variable storing the data of the Node.
+     */
     var data: Any
+    /**
+     The previous Node of the current Node.
+     */
     var prev: Node?
+    /**
+     The next Node of the current Node.
+     */
     var next: Node?
 }
 
 class DoublyLinkedList {
     
+    // The doubly linked list.
+    
+    /**
+     Initializer of the Doubly Linked List.
+     */
+    
     init () {
-        // Initializer
-        
         head = nil
         tail = nil
     }
@@ -36,17 +51,17 @@ class DoublyLinkedList {
     //  - DoublyLinkedList[index].data
     subscript (index: Int) -> Node? {
         get {
-            if length == 0 {
+            if size == 0 {
                 print("Error: The list is empty.")
                 return nil
-            } else if index >= length || index < 0 {
+            } else if index >= size || index < 0 {
                 print("Error: Index [\(index)] is out of range.")
                 return nil
             }
             
             var cur = tail
             
-            if index < length / 2
+            if index < size / 2
             {
                 // The first half of the list
                 cur = head
@@ -58,7 +73,7 @@ class DoublyLinkedList {
                 }
             } else {
                 // The second half of the list
-                var count = length - 1
+                var count = size - 1
                 while count > index {
                     cur = cur?.prev
                     count -= 1
@@ -68,15 +83,15 @@ class DoublyLinkedList {
         }
         
         set (newValue) {
-            if length == 0 {
+            if size == 0 {
                 print("Error: Nothing in the list yet.")
-            } else if index >= length || index < 0 {
+            } else if index >= size || index < 0 {
                 print("Error: Index [\(index)] is out of range.")
             }
             
             var cur = tail
             
-            if index < length / 2
+            if index < size / 2
             {
                 // The first half of the list
                 cur = head
@@ -88,7 +103,7 @@ class DoublyLinkedList {
                 }
             } else {
                 // The second half of the list
-                var count = length - 1
+                var count = size - 1
                 while count > index {
                     cur = cur?.prev
                     count -= 1
@@ -99,11 +114,9 @@ class DoublyLinkedList {
         }
     }
     
-    func isEmpty() -> Bool {
-        // Return whether the list is empty
-        return (head == nil)
-    }
-    
+    /**
+     A function that clears the whole list.
+     */
     func clear() {
         // Clear the linked list
         head = nil
@@ -111,7 +124,9 @@ class DoublyLinkedList {
     }
     
     // MARK: - Add Elements
-    
+    /**
+     A function that pushs an Node with the data to the head of the list.
+     */
     func pushHead(data: Any) {
         // Add an element to the front
         
@@ -129,6 +144,9 @@ class DoublyLinkedList {
         }
     }
     
+    /**
+     A function that pushs an Node with the data to the tail of the list.
+     */
     func pushTail(data: Any) {
         // Add an element to the end
         
@@ -147,6 +165,9 @@ class DoublyLinkedList {
         
     }
     
+    /**
+     A function that insert a Node with the data at the assigned index of the list.
+     */
     func insertAt(index: Int, data: Any) {
         // Insert data at the assigned index of the list
         // - The index counts from 0 to length-1
@@ -154,10 +175,10 @@ class DoublyLinkedList {
         if index == 0 {
             // Add element to the front
             pushHead(data: data)
-        } else if index == length {
+        } else if index == size {
             // Add element to the end
             pushTail(data: data)
-        } else if index < length {
+        } else if index < size {
             // Add the element at the assigned index
             var count = 0
             var cur = head
@@ -176,7 +197,9 @@ class DoublyLinkedList {
     }
     
     // MARK: - Delete elements
-    
+    /**
+     A function that pops the head Node of the list.
+     */
     func popHead() {
         // Delete the first element from the list
         if head != nil {
@@ -193,7 +216,9 @@ class DoublyLinkedList {
             print("popHead Error: The list is empty")
         }
     }
-    
+    /**
+     A function that pops the tail Node of the list.
+     */
     func popTail() {
         // Delete the last element from the list
         if head != nil {
@@ -210,7 +235,9 @@ class DoublyLinkedList {
             print("popTail Error: The list is empty.")
         }
     }
-    
+    /**
+     A function that pops the Node at the assigned index of the list.
+     */
     func removeAt(index: Int) {
         
         // Insert data at the assigned index of the list
@@ -219,10 +246,10 @@ class DoublyLinkedList {
         if index == 0 {
             // Delete the element at front
             popHead()
-        } else if index == length - 1 {
+        } else if index == size - 1 {
             // Delete the element at the end
             popTail()
-        } else if index < length {
+        } else if index < size {
             // Delete the element at the assigned index
             
             var count = 0
@@ -241,35 +268,12 @@ class DoublyLinkedList {
         }
     }
     
-    // MARK: Private functions
-    
-    private func insertBetween(before: Node, after: Node, data: Any){
-        // Insert at between 'before' and 'after'
-        let newNode = Node.init(value: data)
-        
-        before.next = newNode   // [before] -> newNode
-        after.prev = newNode    // [before] -> newNode <- [after]
-        
-        newNode.next = after    // [before] -> newNode <--> [after]
-        newNode.prev = before   // [before] <--> newNode <--> [after]
-    }
-    
-    private func removeBetween(before: Node, after: Node)
-    {
-        // Remove between 'before' and 'after'
-        // - [before] <--> [deleteThis] <--> [after]
-        
-                                //          <------------------->
-        before.next = after     // [before] <-X [deleteThis] <--> [after]
-                                //          <-X [deleteThis] X->
-        after.prev = before     // [before] <------------------> [after]
-        
-    }
-    
+    /**
+     A function that prints out the list.
+     */
     func printList() {
-        // Print the list
-        
         if head != nil {
+            // If there is a list.
             var cur = head
             
             while cur != nil {
@@ -285,13 +289,55 @@ class DoublyLinkedList {
             // Empty list handling
             print("The list is empty.")
         }
+    }
+    
+    // MARK: Private functions
+    
+    /**
+     A private function that inserts a Node with data between the `before` Node and the `after` Node
+     */
+    private func insertBetween(before: Node, after: Node, data: Any){
+        // Insert at between 'before' and 'after'
+        let newNode = Node.init(value: data)
         
+        before.next = newNode   // [before] -> newNode
+        after.prev = newNode    // [before] -> newNode <- [after]
+        
+        newNode.next = after    // [before] -> newNode <--> [after]
+        newNode.prev = before   // [before] <--> newNode <--> [after]
+    }
+    
+    /**
+     A private function that removes the Node(s) between the `before` Node and the `after` Node
+     */
+    private func removeBetween(before: Node, after: Node)
+    {
+        // Remove between 'before' and 'after'
+        // - [before] <--> [deleteThis] <--> [after]
+        
+        //          <------------------->
+        before.next = after     // [before] <-X [deleteThis] <--> [after]
+        //          <-X [deleteThis] X->
+        after.prev = before     // [before] <------------------> [after]
         
     }
     
-    var head: Node?         // head element
-    var tail: Node?         // tail element
-    var length: Int {       // length of the list
+    // MARK: Elements
+    
+    /**
+     The head element of the list.
+     */
+    var head: Node?
+    
+    /**
+     The tail element of the list.
+     */
+    var tail: Node?
+    
+    /**
+     An Int that indicates the size of the list.
+     */
+    var size: Int {
         var count = 0
         var cur = head
         
@@ -301,5 +347,13 @@ class DoublyLinkedList {
         }
         return count
     }
+    
+    /**
+     A Bool that indicates whether the list is empty or not.
+     */
+    var isEmpty: Bool {
+        get {
+            return (head == nil)
+        }
+    }
 }
-

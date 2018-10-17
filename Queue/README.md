@@ -40,14 +40,14 @@ To get the element at the rear end, call the Rear() function.
 myQueueName.Rear()
 ```
 
-### Get the size and whether the Stack is empty
+### Get the size and whether the Queue is empty
 
-To get the size of the Queue, you will call the Size() function.
+To get the size of the Queue, get the variable 'size' with the following command:
 ```swift
-myQueueName.Size()
+myQueueName.size
 ```
 
-To get whether the Queue is empty, call the isEmpty() function.
+To get whether the Queue is empty, get the variable 'isEmpty' with the following command:
 ```swift
-myQueueName.isEmpty()
+myQueueName.isEmpty
 ```

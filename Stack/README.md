@@ -34,12 +34,12 @@ myStackName.Top()
 
 ### Get the size and whether the Stack is empty
 
-To get the size of the Stack, you will call the Size() function.
+To get the size of the Stack, get the variable 'size' with the following command:
 ```swift
-myStackName.Size()
+myStackName.size
 ```
 
-To get whether the Stack is empty, call the isEmpty() function.
+To get whether the Stack is empty, get the variable 'isEmpty' with the following command:
 ```swift
-myStackName.isEmpty()
+myStackName.isEmpty
 ```

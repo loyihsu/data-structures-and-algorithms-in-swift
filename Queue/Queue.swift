@@ -1,6 +1,6 @@
 //
 //  Queue.swift
-//  
+//
 //
 //  Created by Loyi on 10/16/18.
 //
@@ -13,36 +13,52 @@ class Queue {
         // Initializer
     }
     
-    func isEmpty() -> Bool {
-        // This function returns whether the queue is empty
-        return queue.isEmpty
-    }
-    
-    func Size() -> Int {
-        // This function returns the size of the queue
-        return queue.count
-    }
-    
+    /**
+     A function that returns the Front element of your Queue.
+     */
     func Front() -> Any? {
-        // This function returns the element at the front end of the queue
         return queue.first
     }
     
+    /**
+     A function that returns the Rear element of your Queue.
+     */
     func Rear() -> Any? {
-        // This function returns the element at the rear end of the queue
         return queue.last
     }
     
+    /**
+     A function that pushs the element to the Rear end of the Queue.
+     */
     func Push(element: Any) {
-        // This function pushs the new element at the rear end of the queue
         queue.append(element)
     }
     
+    /**
+     A function that pops the Front element from the Queue.
+     */
     func Pop() {
-        // This function pops the element at the front end of the queue
         queue.removeFirst()
     }
     
-    private var queue = [Any]() // A private array to store the queue
+    /**
+     An Int that indicates the size of the Queue.
+     */
+    var size: Int {
+        get {
+            return queue.count
+        }
+    }
+    
+    /**
+     A Bool that indicates whether the Queue is empty or not.
+     */
+    var isEmpty: Bool {
+        get {
+            return queue.isEmpty
+        }
+    }
+    
+    // A private array to store the Queue.
+    private var queue = [Any]()
 }
-

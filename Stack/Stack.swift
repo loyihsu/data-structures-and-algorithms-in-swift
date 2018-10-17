@@ -13,30 +13,47 @@ class Stack {
         // Initializer
     }
     
-    func isEmpty() -> Bool {
-        // This function returns whether the stack is empty
-        return stack.isEmpty
-    }
-    
+    /**
+     A function that returns the Top element of your Stack.
+     */
     func Top() -> Any? {
-        // This function returns the top element of the stack
         return stack.last
     }
     
+    /**
+     A function that pushs the element to the Top of the Stack.
+     */
     func Push(element: Any) {
-        // This function adds new element to the stack
         stack.append(element)
     }
     
+    /**
+     A function that pops the Top element from the Stack.
+     */
     func Pop() {
-        // This function pops the element on the top
         stack.popLast()
     }
     
-    func Size() -> Int {
-        // This function returns the size of the stack
-        return stack.count
+    /**
+     An Int that indicates the size of the Stack.
+     */
+    var size: Int {
+        get {
+            return stack.count
+        }
     }
     
+    /**
+     A Bool that indicates whether the Stack is empty or not.
+     */
+    var isEmpty: Bool {
+        get {
+            return stack.isEmpty
+        }
+    }
+    
+    // A private array to store the Stack.
     private var stack = [Any]()
 }
+
+

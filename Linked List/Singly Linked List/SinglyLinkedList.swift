@@ -11,34 +11,46 @@ class Node {
     
     // Nodes of the linked list
     
+    /**
+     Initializer for a new Node. Provide a value and the next element will be predefined as nil.
+     */
     init (value: Any) {
-        // Initializer
-        
         data = value
         next = nil
     }
     
+    /**
+     A variable storing the data of the Node.
+     */
     var data: Any
+    /**
+     The next Node of the current Node.
+     */
     var next: Node?
 }
 
 class SinglyLinkedList {
     
+    // The singly linked list.
+    
+    /**
+     Initializer of the Singly Linked List.
+     */
+    
     init () {
-        // Initializer
-        
         head = nil
         tail = nil
     }
+    
     
     // Subscript
     //  - SinglyLinkedList[index].data
     subscript (index: Int) -> Node? {
         get {
-            if length == 0 {
+            if size == 0 {
                 print("Error: The list is empty.")
                 return nil
-            } else if index >= length || index < 0 {
+            } else if index >= size || index < 0 {
                 print("Error: Index [\(index)] is out of range.")
                 return nil
             }
@@ -55,9 +67,9 @@ class SinglyLinkedList {
         }
         
         set (newValue) {
-            if length == 0 {
+            if size == 0 {
                 print("Error: Nothing in the list yet.")
-            } else if index >= length || index < 0 {
+            } else if index >= size || index < 0 {
                 print("Error: Index [\(index)] is out of range.")
             }
             
@@ -73,18 +85,18 @@ class SinglyLinkedList {
         }
     }
     
-    func isEmpty() -> Bool {
-        // Return whether the list is empty
-        return (head == nil)
-    }
-    
+    /**
+     A function that clears the whole list.
+     */
     func clear() {
-        // Clear the linked list
         head = nil
         tail = nil
     }
     
     // MARK: - Add Elements
+    /**
+     A function that pushs an Node with the data to the head of the list.
+     */
     func pushHead(data: Any) {
         // Add a new element to the front
         
@@ -101,6 +113,9 @@ class SinglyLinkedList {
         }
     }
     
+    /**
+     A function that pushs an Node with the data to the tail of the list.
+     */
     func pushTail(data: Any) {
         // Add a new element to the end
         
@@ -117,19 +132,21 @@ class SinglyLinkedList {
         }
     }
     
+    /**
+     A function that insert a Node with the data at the assigned index of the list.
+     */
     func insertAt(index: Int, data: Any) {
-        // Insert data at the assigned index of the list
-        // - The index counts from 0 to length-1
+        
+        // The index counts from 0 to (length-1)
         
         if index == 0 {
             // Add element to the front
             pushHead(data: data)
-        } else if index == length {
+        } else if index == size {
             // Add element to the end
             pushTail(data: data)
-        } else if index < length {
+        } else if index < size {
             // Add the element at the assigned index
-            
             var count = 0
             var cur = head
             
@@ -147,14 +164,18 @@ class SinglyLinkedList {
     }
     
     // MARK: - Delete elements
-    
+    /**
+     A function that pops the head Node of the list.
+     */
     func popHead() {
-        // Delete the first element from the list
         if head != nil {
+            // If there is a list.
             if head?.next == nil {
+                // If the head is the only Node.
                 head = nil
                 tail = nil
             } else {
+                // If the head is not the only Node.
                 head = head?.next
             }
         } else {
@@ -164,16 +185,20 @@ class SinglyLinkedList {
         
     }
     
+    /**
+     A function that pops the tail Node of the list.
+     */
     func popTail() {
         // Delete the last element from the list
         
         if head != nil {
+            // If there is a list.
             if head?.next == nil {
-                // Only one element inside
+                // If the head is the only Node.
                 head = nil
                 tail = nil
             } else {
-                // More than one element
+                // If the head is not the only Node.
                 var cur = head
                 
                 while cur?.next?.next != nil
@@ -189,19 +214,20 @@ class SinglyLinkedList {
             print("popTail Error: The list is empty.")
         }
     }
-    
+    /**
+     A function that pops the Node at the assigned index of the list.
+     */
     func removeAt(index: Int) {
         
-        // Insert data at the assigned index of the list
-        // - The index counts from 0 to length-1
+        // - The index counts from 0 to (length-1)
         
         if index == 0 {
             // Delete the element at front
             popHead()
-        } else if index == length - 1 {
+        } else if index == size - 1 {
             // Delete the element at the end
             popTail()
-        } else if index < length {
+        } else if index < size {
             // Delete the element at the assigned index
             
             var count = 0
@@ -221,10 +247,12 @@ class SinglyLinkedList {
         }
     }
     
+    /**
+     A function that prints out the list.
+     */
     func printList() {
-        // Print the list
-        
         if head != nil {
+            // If there is a list.
             var cur = head
             
             while cur != nil {
@@ -246,6 +274,10 @@ class SinglyLinkedList {
     }
     
     // MARK: Reverse function
+    
+    /**
+     A function that reserves the list.
+     */
     
     func reverse() {
         // This function reverses the whole linked list
@@ -269,6 +301,9 @@ class SinglyLinkedList {
     
     // MARK: Private functions
     
+    /**
+     A private function that inserts a Node with data between the `before` Node and the `after` Node
+     */
     private func insertBetween(before: Node, after: Node, data: Any){
         // Insert at between 'before' and 'after'
         let newNode = Node.init(value: data)
@@ -277,9 +312,11 @@ class SinglyLinkedList {
         before.next = newNode       // [before] -> newNode -> after
     }
     
+    /**
+     A private function that removes the Node(s) between the `before` Node and the `after` Node
+     */
     private func removeBetween(before: Node, after: Node)
     {
-        // Remove between 'before' and 'after'
         // - [before] -> delete this -> [after]
         
         before.next = after         // [before] -> [after]
@@ -287,9 +324,20 @@ class SinglyLinkedList {
     
     // MARK: Elements
     
-    var head: Node?         // head element
-    var tail: Node?         // tail element
-    var length: Int {       // length of the list
+    /**
+     The head element of the list.
+     */
+    var head: Node?
+    
+    /**
+     The tail element of the list.
+     */
+    var tail: Node?
+    
+    /**
+     An Int that indicates the size of the list.
+     */
+    var size: Int {
         var count = 0
         var cur = head
         
@@ -298,5 +346,14 @@ class SinglyLinkedList {
             count += 1
         }
         return count
+    }
+    
+    /**
+     A Bool that indicates whether the list is empty or not.
+     */
+    var isEmpty: Bool {
+        get {
+            return (head == nil)
+        }
     }
 }
