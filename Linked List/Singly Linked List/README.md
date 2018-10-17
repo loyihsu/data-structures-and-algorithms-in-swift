@@ -114,3 +114,11 @@ To get the length of the list:
 ```swift
 myListName.length
 ```
+
+### To reverse the list
+
+To reverse the list, you can call the reverse() function.
+
+```swift
+myListName.reverse()
+```
