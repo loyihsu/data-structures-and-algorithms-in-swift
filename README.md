@@ -15,4 +15,4 @@ I am still working on implementing an increasing number of other data structures
 Each data structure is implemented in a single Swift file. Just include the Swift file in your project and you are ready to go.
 
 ## License
-This project is licensed under the MIT license. Please refer to the [LICENSE](https://github.com/loyihsu/Data-Structures-in-Swift/blob/master/LICENSE) for details.
+This project is licensed under the MIT license. Please refer to the [LICENSE](https://github.com/loyihsu/Data-Structures-in-Swift/blob/master/LICENSE.md) for details.
