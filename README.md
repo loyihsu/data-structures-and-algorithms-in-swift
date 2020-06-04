@@ -6,11 +6,11 @@ This is a project including implementation practices of common data structure & 
 
 The data structures implemented in this project include:
 
-- [Stack](https://github.com/loyihsu/data-structures-and-algorithms-in-swift/tree/master/Stack)
-- [Queue](https://github.com/loyihsu/data-structures-and-algorithms-in-swift/tree/master/Queue)
+- [Stack](https://github.com/loyihsu/data-structures-and-algorithms-in-swift/tree/master/Data%20Structures/Stack)
+- [Queue](https://github.com/loyihsu/data-structures-and-algorithms-in-swift/tree/master/Data%20Structures/Queue)
 - Linked List
-  - [Singly Linked List](https://github.com/loyihsu/data-structures-and-algorithms-in-swift/tree/master/Linked%20List/Singly%20Linked%20List)
-  - [Doubly Linked List](https://github.com/loyihsu/data-structures-and-algorithms-in-swift/tree/master/Linked%20List/Doubly%20Linked%20List)
+  - [Singly Linked List](https://github.com/loyihsu/data-structures-and-algorithms-in-swift/tree/master/Data%20Structures/Linked%20List/Singly%20Linked%20List)
+  - [Doubly Linked List](https://github.com/loyihsu/data-structures-and-algorithms-in-swift/tree/master/Data%20Structures/Linked%20List/Doubly%20Linked%20List)
 
 ## Algorithms
 
