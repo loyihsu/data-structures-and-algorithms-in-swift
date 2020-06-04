@@ -1,6 +1,6 @@
 # Data Structures & Algorithms in Swift
 
-This is a project including implementation practices of common data structure & algorithms in Swift. \
+This is a project including implementation practices of common data structure & algorithms in Swift.
 
 ## Data Structures
 
@@ -14,9 +14,13 @@ The data structures implemented in this project include:
 
 ## Algorithms
 
+The algorithms implemented in this project include:
+
+- [Dijkstra's Algorithm](https://github.com/loyihsu/data-structures-and-algorithms-in-swift/blob/master/Algorithm/Dijkstras-Algorithm.swift)
+
 ## How can I use these?
 
-Clone the project, copy the file to your project, and you are good to go!
+Clone the project, copy the files to your project, and you are good to go!
 
 ## License
 Licensed under [MIT](https://github.com/loyihsu/data-structures-and-algorithms-in-swift/blob/master/LICENSE.md).
