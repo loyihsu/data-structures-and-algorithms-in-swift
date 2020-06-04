@@ -16,7 +16,8 @@ The data structures implemented in this project include:
 
 The algorithms implemented in this project include:
 
-- [Dijkstra's Algorithm](https://github.com/loyihsu/data-structures-and-algorithms-in-swift/blob/master/Algorithm/Dijkstras-Algorithm.swift)
+- [Dijkstra's Algorithm](https://github.com/loyihsu/data-structures-and-algorithms-in-swift/blob/master/Algorithms/Dijkstras-Algorithm.swift)
+- [Floyd-Warshall Algorithm](https://github.com/loyihsu/data-structures-and-algorithms-in-swift/blob/master/Algorithms/FloydWarshall-Algorithm.swift)
 
 ## How can I use these?
 
