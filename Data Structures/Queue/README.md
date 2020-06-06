@@ -17,13 +17,13 @@ let myQueueName = Queue()
 To add an element to the rear end of the Queue, you have to push it to the Queue.
 
 ```swift
-myQueueName.Push(element: /*Your data*/)
+myQueueName.push(/*Your data*/)
 ```
 
-To delete the Front element of the Queue, you have to pop it.
+To delete the Front element of the Queue, you have to pop it. It would also return the removed element.
 
 ```swift
-myQueueName.Pop()
+myQueueName.pop()
 ```
 
 ### Get the Front and Rear element
@@ -31,20 +31,20 @@ myQueueName.Pop()
 To get the element at the front end, call the Front() function.
 
 ```swift
-myQueueName.Front()
+myQueueName.front
 ```
 
 To get the element at the rear end, call the Rear() function.
 
 ```swift
-myQueueName.Rear()
+myQueueName.rear
 ```
 
 ### Get the size and whether the Queue is empty
 
 To get the size of the Queue, get the variable 'size' with the following command:
 ```swift
-myQueueName.size
+myQueueName.count
 ```
 
 To get whether the Queue is empty, get the variable 'isEmpty' with the following command:
