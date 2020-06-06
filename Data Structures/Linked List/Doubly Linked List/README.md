@@ -21,19 +21,19 @@ Three methods are implemented to insert to the list:
 1. Insert to the head
 
 ```swift
-myListName.pushHead(data: /*your data*/)
+myListName.pushHead(/*your data*/)
 ```
 
 2. Insert to the tail
 
 ```swift
-myListName.pushTail(data: /*your data*/)
+myListName.pushTail(/*your data*/)
 ```
 
 3. Insert at the selected index
 
 ```swift
-myListName.insertAt(index: /*Index 0...(length-1)*/, data: /*your data*/)
+myListName.insert(/*your data*/, at: /*Index 0...(length-1)*/)
 ```
 
 ### Remove from the list
@@ -53,7 +53,7 @@ myListName.popTail()
 3. Remove at the selected index
 
 ```swift
-myListName.removeAt(index: /*Index 0...(length-1)*/)
+myListName.remove(at: /*Index 0...(length-1)*/)
 ```
 
 ### Access the elements
@@ -110,5 +110,5 @@ myListName.isEmpty
 ### To get the size of the list
 
 ```swift
-myListName.size
+myListName.count
 ```
