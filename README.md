@@ -18,6 +18,9 @@ The algorithms implemented in this project include:
 
 - [Dijkstra's Algorithm](https://github.com/loyihsu/data-structures-and-algorithms-in-swift/blob/master/Algorithms/Dijkstras-Algorithm.swift)
 - [Floyd-Warshall Algorithm](https://github.com/loyihsu/data-structures-and-algorithms-in-swift/blob/master/Algorithms/FloydWarshall-Algorithm.swift)
+- Sorting
+	- [Bubble Sort](https://github.com/loyihsu/data-structures-and-algorithms-in-swift/blob/master/Algorithms/Sorting/bubbleSort.swift)
+	- [Quick Sort](https://github.com/loyihsu/data-structures-and-algorithms-in-swift/blob/master/Algorithms/Sorting/quickSort.swift)
 
 ## How can I use these?
 
