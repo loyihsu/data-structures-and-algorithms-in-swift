@@ -5,8 +5,6 @@
 //  Created by Loyi on 10/16/18.
 //
 
-import Foundation
-
 class Queue<Item> {
     /// Initialiser
     init() { }
