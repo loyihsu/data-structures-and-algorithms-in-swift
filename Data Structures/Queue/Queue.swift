@@ -7,25 +7,17 @@
 
 import Foundation
 
-class Queue {
+class Queue<Item> {
+    /// Initialiser
+    init() { }
 
-    init() {
-        // Initializer
-    }
-
-    /// A function that pushs the element to the Rear end of the Queue.
-    func push(_ element: Any) {
+    /// A function that enqueues the element to the Rear end of the Queue.
+    func enqueue(_ element: Item) {
         queue.append(element)
     }
-
-    /// A function that pops the Front element from the Queue and return the element.
-    func pop() -> Any? {
-        if queue.isEmpty {
-            return nil
-        } else {
-            return queue.removeFirst()
-        }
-
+    /// A function that dequeues the Front element from the Queue and return the element.
+    func dequeue() -> Item? {
+        queue.isEmpty ? nil : queue.removeFirst()
     }
 
     /// An Int that indicates the size of the Queue.
@@ -34,13 +26,12 @@ class Queue {
     /// A Bool that indicates whether the Queue is empty or not.
     var isEmpty: Bool { queue.isEmpty }
 
-    /// A function that returns the Front element of your Queue.
-    var front: Any? { queue.first }
+    /// A variable that returns the Front element of your Queue.
+    var front: Item? { queue.first }
 
-    /// A function that returns the Rear element of your Queue.
-    var rear: Any? { queue.last }
+    /// A variable that returns the Rear element of your Queue.
+    var rear: Item? { queue.last }
 
     // A private array to store the Queue.
-    private var queue = [Any]()
-
+    private var queue = [Item]()
 }

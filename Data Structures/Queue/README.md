@@ -1,6 +1,6 @@
 # Queue
 
-A queue is a specialized array that elements are pushed to the rear end and pop from the front end (First In First Out).
+A queue is a specialized collection that elements are enqueued to the rear end and dequeued from the front end (First In First Out).
 
 ## How to use this?
 
@@ -9,32 +9,34 @@ Add the Swift file to your project and you can use the functions.
 ### Initialize
 
 ```swift
-let myQueueName = Queue()
+let myQueueName = Queue</*Type*/>.init()
 ```
 
-### Push & Pop
+`Type` can be filled in with any data type such as `Int`.
 
-To add an element to the rear end of the Queue, you have to push it to the Queue.
+### Enqueue & Dequeue
+
+To add an element to the rear end of the Queue, you have to enqueue it to the Queue.
 
 ```swift
-myQueueName.push(/*Your data*/)
+myQueueName.enqueue(/*Your data*/)
 ```
 
-To delete the Front element of the Queue, you have to pop it. It would also return the removed element.
+To delete the Front element of the Queue, you have to dequeue it. It would also return the removed element.
 
 ```swift
-myQueueName.pop()
+myQueueName.dequeue()
 ```
 
 ### Get the Front and Rear element
 
-To get the element at the front end, call the Front() function.
+To get the element at the front end, call the front variable.
 
 ```swift
 myQueueName.front
 ```
 
-To get the element at the rear end, call the Rear() function.
+To get the element at the rear end, call the rear variable.
 
 ```swift
 myQueueName.rear
@@ -42,7 +44,7 @@ myQueueName.rear
 
 ### Get the size and whether the Queue is empty
 
-To get the size of the Queue, get the variable 'size' with the following command:
+To get the size of the Queue, get the variable 'count' with the following command:
 ```swift
 myQueueName.count
 ```
