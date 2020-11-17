@@ -7,19 +7,15 @@
 
 import Foundation
 
-class Stack {
-
-    init() {
-        // Initializer
-    }
+class Stack<Item> {
+    /// Initialiser
+    init() { }
 
     /// A function that pushs the element to the Top of the Stack.
-    func push(_ element: Any) {
-        stack.append(element)
-    }
+    func push(_ element: Item) { stack.append(element) }
 
     /// A function that pops the Top element from the Stack and returns the element.
-    func pop() -> Any? { stack.popLast() }
+    func pop() -> Item? { stack.popLast() }
 
     /// An Int that indicates the size of the Stack.
     var count: Int { stack.count }
@@ -27,10 +23,9 @@ class Stack {
     /// A Bool that indicates whether the Stack is empty or not.
     var isEmpty: Bool { stack.isEmpty }
 
-    /// A function that returns the Top element of your Stack.
-    var top: Any? { stack.last }
+    /// A variable that dynamically returns the Top element of the Stack.
+    var top: Item? { stack.last }
 
-    // A private array to store the Stack.
-    private var stack = [Any]()
-
+    // A private array that store the items in the array.
+    private var stack = [Item]()
 }
