@@ -1,11 +1,9 @@
 //
 //  Dijkstras-Algorithm.swift
-//  
 //
-//  Created by Loyi Hsu on 2020/6/4.
+//  # Data Structures & Algorithms in Swift
+//  Created by Loyi on 6/4/20.
 //
-
-import Foundation
 
 struct Edge {
     var from: Int
