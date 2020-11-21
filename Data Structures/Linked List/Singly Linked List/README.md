@@ -1,6 +1,6 @@
 # Singly Linked List
 
-The singly linked list is a kind of linked list that is composed of nodes that not only store data, but also point to the next node.
+The singly linked list is a kind of linked list that is composed of Nodes that not only store the value (`Int`), but also point to the next node.
 
 ## How to use this?
 
@@ -16,107 +16,89 @@ let myListName = SinglyLinkedList()
 
 ### Insert to the list
 
-Three methods are implemented to insert to the list:
+You can insert from either the `head` or the `tail` of the list.
 
-1. Insert to the head
+#### Insert from the head of the list
 
-```swift
-myListName.pushHead(/*your data*/)
+To insert from the head of the list, you can use the `prepend` function:
+
+```swift=
+myListName.prepend(/* Your value */)
 ```
 
-2. Insert to the tail
+#### Insert to the tail of the list
 
-```swift
-myListName.pushTail(/*your data*/)
-```
+To insert to the tail of the list, you can use the `append` function:
 
-3. Insert at the selected index
-
-```swift
-myListName.insert(/*your data*/, at: /*Index 0...(length-1)*/)
+```swift=
+myListName.append(/* Your value */)
 ```
 
 ### Remove from the list
 
-1. Remove from the head
+As in the insertion functions, you can also remove elements from the head or tail of the list. At the same time, if you have the `Node` object, you can also specify the object to be removed directly.
 
-```swift
+#### Remove from the head of the list
+
+To remove from the head to the lis, you can use the `popHead` function:
+
+```swift=
 myListName.popHead()
 ```
 
-2. Remove from the tail
+#### Remove from the tail of the list
 
-```swift
+To remove from the tail of the list, you can use the `popTail` function:
+
+```swift=
 myListName.popTail()
 ```
 
-3. Remove at the selected index
+#### Remove the specified Node
 
-```swift
-myListName.remove(at: /*Index 0...(length-1)*/)
+To remove a specified Node, you can use the `remove` function:
+
+```swift=
+myListName.remove(/* Specify your node */)
 ```
 
-### Access the elements
+### Access data
 
-You can access the elements in the following ways:
+You can directedly get the `head` and `tail` elements in the following way:
 
-1. To access an element at index, you can use subscript:
-
-```swift
-myListName[/*index*/]
-```
-
-You can also change the value of the element at the index in the following way:
-
-```swift
-myListName[/*index*/]?.data = /*updated data*/
-```
-
-Notice that if you want to access the data with this method, you will have to write:
-
-```swift
-myListName[/*index*/]?.data
-```
-
-2. You can directedly get the head and tail elements in the following way:
-
-```swift
+```swift=
 myListName.head
 myListName.tail
 ```
 
-Each list node is composed of a data field and the next node. Therefore, you can have access to the whole list with the head and the next element of each node.
+Each list node is composed of a `value` field and the `next` node. Therefore, you can have access to the whole list with the head and the next element of each node.
 
-3. If you want to print out the list, you can call the predefined printList() function:
+If you want to print out the list, you can call the predefined `printList` function:
 
-```swift
+```swift=
 myListName.printList()
 ```
 
 ### To clear the list
 
-To clear the list, simply call the clear() function.
+To clear the list, simply call the `clear` function.
 
-```swift
+```swift=
 myListName.clear()
 ```
 
 ### To reverse the list
 
-To reverse the list, you can call the reverse() function.
+To reverse the list, you can call the `reverse` function.
 
-```swift
+```swift=
 myListName.reverse()
 ```
 
 ### To get whether the list is empty
 
-```swift
+To check whether the list is empty, you can call the `isEmpty` variable.
+
+```swift=
 myListName.isEmpty
-```
-
-### To get the size of the list
-
-```swift
-myListName.count
 ```
