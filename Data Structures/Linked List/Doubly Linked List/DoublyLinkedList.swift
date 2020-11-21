@@ -7,309 +7,143 @@
 
 import Foundation
 
-class Node {
+class Node: Equatable {
 
-    // Nodes of the doubly linked list
+    // Nodes of the linked list
 
-    /// Initializer for a new Node. Provide a value and the prev and next elements will be predefined as nil.
-    init (value: Any) {
-        data = value
-        prev = nil
-        next = nil
+    // MARK: - Initialiser
+
+    /// Initializer for a new Node. Provide a value and the next element will be predefined as nil.
+    init(_ value: Int, prev: Node? = nil, next: Node? = nil) {
+        self.value = value
+        self.prev = prev
+        self.next = next
     }
 
-    /// A variable storing the data of the Node.
-    var data: Any
+    // MARK: - Equatable
 
-    /// The previous Node of the current Node.
+    /// To make the node equatable.
+    static func == (lhs: Node, rhs: Node) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    // MARK: - Properties
+
+    /// The ID to make equatable.
+    private let id = UUID()
+
+    /// The value of the node
+    var value: Int
+
+    /// The previous Node of the Node.
     var prev: Node?
 
-    /// The next Node of the current Node.
+    /// The next Node of the Node.
     var next: Node?
 }
 
 class DoublyLinkedList {
 
-    init () {
-        head = nil
-        tail = nil
-    }
-
-    // Subscript
-    //  - DoublyLinkedList[index].data
-    subscript (index: Int) -> Node? {
-        get {
-            if count == 0 {
-                print("Error: The list is empty.")
-                return nil
-            } else if index >= count || index < 0 {
-                print("Error: Index [\(index)] is out of range.")
-                return nil
-            }
-
-            var cur = tail
-
-            if index < count / 2 {
-                // The first half of the list
-                cur = head
-                var c = 0
-
-                while c < index {
-                    cur = cur?.next
-                    c += 1
-                }
-            } else {
-                // The second half of the list
-                var c = count - 1
-                while c > index {
-                    cur = cur?.prev
-                    c -= 1
-                }
-            }
-            return cur
-        }
-
-        set (newValue) {
-            if count == 0 {
-                print("Error: Nothing in the list yet.")
-            } else if index >= count || index < 0 {
-                print("Error: Index [\(index)] is out of range.")
-            }
-
-            var cur = tail
-
-            if index < count / 2 {
-                // The first half of the list
-                cur = head
-                var c = 0
-
-                while c < index {
-                    cur = cur?.next
-                    c += 1
-                }
-            } else {
-                // The second half of the list
-                var c = count - 1
-                while c > index {
-                    cur = cur?.prev
-                    c -= 1
-                }
-            }
-
-            cur?.data = newValue as Any
-        }
-    }
-
-    /// A function that clears the whole list.
-    func clear() {
-        // Clear the linked list
-        head = nil
-        tail = nil
-    }
-
-    // MARK: - Add Elements
+    // MARK: - Inserting functions
 
     /// A function that pushs an Node with the data to the head of the list.
-    func pushHead(_ data: Any) {
-        // Add an element to the front
-
-        let newNode = Node(value: data)
-
-        if head != nil {
-            // If there are already elements in the list.
-            newNode.next = head         // [newNode] -> [head]
-            head = newNode              // [head (newNode)] -> [old head]
-            head?.next?.prev = head     // [head (newNode)] <--> [old head]
+    func prepend(_ value: Int) {
+        let newNode = Node(value)
+        if isEmpty {
+            head = newNode      // [head (newNode)]
+            tail = newNode      // Point the tail to the head
         } else {
-            // There is no element in the list
-            head = newNode              // [head (newNode)]
-            tail = newNode              // Point the tail to the head
+            newNode.next = head     // [newNode] -> [head]
+            head = newNode          // [head (newNode)] -> [old head]
+            head?.next?.prev = head // [head (newNode)] <--> [old head]
         }
     }
 
     /// A function that pushs an Node with the data to the tail of the list.
-    func pushTail(_ data: Any) {
-        // Add an element to the end
-
-        let newNode = Node.init(value: data)
-
-        if head != nil {
-            // If there are already elements in the list.
-            newNode.prev = tail
-            tail?.next = newNode
-            tail = newNode
+    func append(_ value: Int) {
+        let newNode = Node(value)
+        if isEmpty {
+            head = newNode      // [head (newNode)]
+            tail = newNode      // Point the tail to the head
         } else {
-            // There is no element in the list
-            head = newNode              // [head (newNode)]
-            tail = newNode              // Point the tail to the head
-        }
-
-    }
-
-    /// A function that insert a Node with the data at the assigned index of the list.
-    func insert(_ data: Any, at index: Int) {
-        // Insert data at the assigned index of the list
-        // - The index counts from 0 to length-1
-
-        if index == 0 {
-            // Add element to the front
-            pushHead(data)
-        } else if index == count {
-            // Add element to the end
-            pushTail(data)
-        } else if index < count {
-            // Add the element at the assigned index
-            var count = 0
-            var cur = head
-
-            while count < index - 1 {
-                cur = cur?.next
-                count += 1
-            }
-
-            // Call the private function to insert at the assigned place
-            insertBetween(before: cur!, after: (cur?.next)!, data: data)
-        } else {
-            // Handle index out of range
-            print("insertAt Error: Index [\(index)] is out of range.")
+            newNode.prev = tail     // [tail] <- [newNode]
+            tail?.next = newNode    // [tail] <--> [newNode]
+            tail = newNode          // [old tail] <--> [tail (newNode)]
         }
     }
-
-    // MARK: - Delete elements
+    // MARK: - Deleting functions
 
     /// A function that pops the head Node of the list.
     func popHead() {
-        // Delete the first element from the list
-        if head != nil {
-            if head?.next == nil {
-                // Handling the case where there is only the last element to delete
-                head = nil
-                tail = nil
-            } else {
-                head = head?.next   // [old head] <-X [head] -> ...
-                head?.prev = nil    // [old head] XX [head] -> ...
-            }
-        } else {
-            // Error handling
-            print("popHead Error: The list is empty")
+        if head == tail {
+            clear()
+            return
         }
+        head = head?.next
+        head?.prev = nil
     }
 
     /// A function that pops the tail Node of the list.
     func popTail() {
-        // Delete the last element from the list
-        if head != nil {
-            if head?.next == nil {
-                // Handling the case where there is only the last element to delete
-                head = nil
-                tail = nil
-            } else {
-                tail = tail?.prev
-                tail?.next = nil
-            }
+        if head == tail {
+            clear()
+            return
+        }
+        tail = tail?.prev
+        tail?.next = nil
+    }
+
+    /// Remove specified Node from the list.
+    func remove(_ node: Node) {
+        if node == head {
+            popHead()
+        } else if node == tail {
+            popTail()
         } else {
-            // Error handling
-            print("popTail Error: The list is empty.")
+            var temp = head
+            while let cur = temp {
+                if cur.next == node {
+                    cur.next = cur.next?.next
+                    cur.next?.prev = cur
+                    break
+                }
+                temp = cur.next
+            }
         }
     }
 
-    /// A function that pops the Node at the assigned index of the list.
-    func remove(at index: Int) {
+    // MARK: - List handling function
 
-        // Insert data at the assigned index of the list
-        // - The index counts from 0 to length-1
-
-        if index == 0 {
-            // Delete the element at front
-            popHead()
-        } else if index == count - 1 {
-            // Delete the element at the end
-            popTail()
-        } else if index < count {
-            // Delete the element at the assigned index
-
-            var count = 0
-            var cur = head
-
-            while count < index {
-                cur = cur?.next
-                count += 1
-            }
-
-            // Call the private function to delete at the assigned place
-            removeBetween(before: (cur?.prev)!, after: (cur?.next)!)
-        } else {
-            // Handle index out of range
-            print("remove Error: Index [\(index)] is out of range.")
-        }
+    /// A function that clears the whole list.
+    func clear() {
+        head = nil
+        tail = nil
     }
 
     /// A function that prints out the list.
     func printList() {
-        if head != nil {
-            // If there is a list.
-            var cur = head
-
-            while cur != nil {
-
-                if cur?.next == nil {
-                    print(cur?.data ?? "")
-                } else {
-                    print(cur?.data ?? "", terminator: ", ")
-                }
-                cur = cur?.next
-            }
-        } else {
-            // Empty list handling
-            print("The list is empty.")
+        if isEmpty {
+            print("Empty List")
+            return
         }
+        var temp = head
+        while let cur = temp {
+            if temp != head {
+                print(" -> ", terminator: "")
+            }
+            print(cur.value, terminator: "")
+            temp = cur.next
+        }
+        print("")
     }
 
-    // MARK: Private functions
-
-    /// A private function that inserts a Node with data between the `before` Node and the `after` Node
-    private func insertBetween(before: Node, after: Node, data: Any) {
-        // Insert at between 'before' and 'after'
-        let newNode = Node.init(value: data)
-
-        before.next = newNode   // [before] -> newNode
-        after.prev = newNode    // [before] -> newNode <- [after]
-
-        newNode.next = after    // [before] -> newNode <--> [after]
-        newNode.prev = before   // [before] <--> newNode <--> [after]
-    }
-
-    /// A private function that removes the Node(s) between the `before` Node and the `after` Node
-    private func removeBetween(before: Node, after: Node) {
-        // Remove between 'before' and 'after'
-        // - [before] <--> [deleteThis] <--> [after]
-        //             <------------------->
-
-        before.next = after     // [before] <-X [deleteThis] <--> [after]
-        //          <-X [deleteThis] X->
-        after.prev = before     // [before] <------------------> [after]
-
-    }
-
-    // MARK: Elements
+    // MARK: - Properties
 
     /// The head element of the list.
     var head: Node?
 
     /// The tail element of the list.
     var tail: Node?
-
-    /// An Int that indicates the size of the list.
-    var count: Int {
-        var count = 0
-        var cur = head
-
-        while cur != nil {
-            cur = cur?.next
-            count += 1
-        }
-        return count
-    }
 
     /// A Bool that indicates whether the list is empty or not.
     var isEmpty: Bool { head == nil }
