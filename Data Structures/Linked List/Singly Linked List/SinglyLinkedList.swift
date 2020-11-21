@@ -125,12 +125,12 @@ class SinglyLinkedList {
         var newNext: Node?      // The new next element, the first will have a nil as the next element
         var current: Node? = head   // The current element
         var newPrev: Node?      // The new previous element
-        // nil -> 0 (head, cur) -> 1 -> 2 -> 3 -> nil
+        // nil X 0 (head, cur) -> 1 -> 2 -> 3 -> nil
         while current != nil {
-            newPrev = current?.next     // nil           -> 0 (cur)         -> 1 (newPrev)      -> ...
-            current?.next = newNext     // nil (newNext) <- 0 (cur)          X 1 (newPrev)      -> ...
-            newNext = current           // nil           <- 0 (newNext, cur) X 1 (newPrev)      -> ...
-            current = newPrev           // nil           <- 0 (newNext)      X 1 (cur, newPrev) -> ...
+            newPrev = current?.next     // nil           X  0 (cur)         -> 1 (newPrev)
+            current?.next = newNext     // nil (newNext) <- 0 (cur)          X 1 (newPrev)
+            newNext = current           // nil           <- 0 (newNext, cur) X 1 (newPrev)
+            current = newPrev           // nil           <- 0 (newNext)      X 1 (cur, newPrev)
         }
         tail = head     // Move the tail index to the head
         head = newNext  // Move the head index to the new head (original tail)
