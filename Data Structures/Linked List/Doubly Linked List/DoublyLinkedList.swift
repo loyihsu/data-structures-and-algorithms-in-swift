@@ -120,6 +120,26 @@ class DoublyLinkedList {
         tail = nil
     }
 
+    /// A function that reserves the list.
+    func reverse() {
+        // This function reverses the whole linked list
+        var newNext: Node?      // The new next element, the first will have a nil as the next element
+        var current: Node? = head   // The current element
+        var newPrev: Node?      // The new previous element
+        // nil <-X 0 (head, cur) <--> 1 <--> 2 <--> 3 <--> nil
+        while let cur = current {
+            newPrev = cur.next     // nil           X  0 (cur)          -> 1 (newPrev)
+            cur.next = newNext     // nil (newNext) <- 0 (cur)           X 1 (newPrev)
+            cur.prev = newPrev     // nil (newNext) <- 0 (cur)          -> 1 (newPrev)
+            newNext = current      // nil           <- 0 (newNext, cur) -> 1 (newPrev)
+            current = newPrev      // nil           <- 0 (newNext)      -> 1 (cur, newPrev)
+        }
+        tail = head     // Move the tail index to the head
+        head = newNext  // Move the head index to the new head (original tail)
+    }
+
+    // MARK: - Printing function
+
     /// A function that prints out the list.
     func printList() {
         if isEmpty {

@@ -87,6 +87,14 @@ To clear the list, simply call the `clear` function.
 myListName.clear()
 ```
 
+### To reverse the list
+
+To reverse the list, you can call the `reverse` function.
+
+```swift=
+myListName.reverse()
+```
+
 ### To get whether the list is empty
 
 To check whether the list is empty, you can call the `isEmpty` variable.
