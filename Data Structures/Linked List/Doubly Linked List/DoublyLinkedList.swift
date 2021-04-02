@@ -36,7 +36,7 @@ class Node: Equatable {
     var value: Int
 
     /// The previous Node of the Node.
-    var prev: Node?
+    weak var prev: Node?
 
     /// The next Node of the Node.
     var next: Node?
