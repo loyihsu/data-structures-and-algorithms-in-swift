@@ -13,16 +13,22 @@ extension Array where Element == Int {
         guard left >= 0 && right < self.count && left < right else { return }
         var i = left, j = right
         let standard = self[left]
-        
+
         while i != j {
-            while self[j] >= standard && i < j { j -= 1 }
-            while self[i] <= standard && i < j { i += 1 }
-            if i < j { swapAt(i, j) }
+            while self[j] >= standard && i < j {
+                j -= 1
+            }
+            while self[i] <= standard && i < j {
+                i += 1
+            }
+            if i < j {
+                (self[i], self[j]) = (self[j], self[i])
+            }
         }
-        
+
         self[left] = self[i]
         self[i] = standard
-        
+
         quickSort(left: left, right: i-1)
         quickSort(left: i+1, right: right)
     }
